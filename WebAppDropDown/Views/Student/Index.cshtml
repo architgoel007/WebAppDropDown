@@ -1,0 +1,32 @@
+﻿@model WebAppDropDown.Models.ViewModel.StudentCourse
+
+<a asp-controller="Student" asp-action="Create" class="btn btn-info">AddStudent</a>
+<table class="table-bordered table">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Image</th>
+        <th>MyCourse</th>
+        <th>Address</th>
+        <th>Country</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var em in Model.students)
+    { 
+        <tr>
+            <td>@em.Id</td>
+            <td>@em.Name</td>
+            <td>@em.Gender</td>
+            <td>@em.Image</td>
+            <td>@em.MyCourse</td>
+            <td>@em.Address</td>
+            <td>@em.Country</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Student" asp-route-id="@em.Id" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                <a asp-action="Delete" asp-controller="Student" asp-route-id="@em.Id" class="btn btn-danger" onclick="return confirm('Are you sure want to delete')"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
